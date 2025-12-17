@@ -1,0 +1,28 @@
+# Text CAPTCHA API
+
+**Endpoint:** `POST /api/public/textCaptcha`
+
+**Request body (JSON):**
+
+```json
+{ "text": "<full captcha or text to parse>" }
+```
+
+**Response (200):**
+
+```json
+{ "answer": "<extracted answer>" }
+```
+
+**Example (curl):**
+
+```bash
+curl -X POST http://localhost:3000/api/public/textCaptcha \
+  -H "Content-Type: application/json" \
+  -d '{"text":"What is the color of the sky? Answer: blue"}'
+```
+
+**Notes:**
+
+- The endpoint uses an LLM (OpenAI via `lib/textToText.ts`) to extract the final answer and returns strict JSON.
+- Ensure `OPENAI_API_KEY` is configured.

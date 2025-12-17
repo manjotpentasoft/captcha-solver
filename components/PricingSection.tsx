@@ -29,7 +29,7 @@ export default function PricingSection() {
   return (
     <motion.section
       id="pricing"
-      className="py-4 relative overflow-hidden"
+      className="py-12 relative overflow-hidden"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"

@@ -11,12 +11,12 @@ export const navLinks = [
   },
   {
     title: "Blog",
-    href: "/blog",
+    href: "/blogs",
     external: false,
   },
   {
     title: "Documentation",
-    href: "#",
+    href: "/docs",
     external: true,
   },
 ];

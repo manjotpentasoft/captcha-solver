@@ -1,0 +1,28 @@
+# Image CAPTCHA API
+
+**Endpoint:** `POST /api/public/imageCaptcha`
+
+**Request body (JSON):**
+
+```json
+{ "imageUrl": "https://example.com/captcha.png" }
+```
+
+**Response (200):**
+
+```json
+{ "text": "<extracted text>" }
+```
+
+**Example (curl):**
+
+```bash
+curl -X POST http://localhost:3000/api/public/imageCaptcha \
+  -H "Content-Type: application/json" \
+  -d '{"imageUrl":"https://example.com/captcha.png"}'
+```
+
+**Notes:**
+
+- Uses OpenAI's Vision-style `input_image` flow in `lib/imageToText.ts` to extract all readable text.
+- Preserves original casing, spacing, and line breaks as much as possible.

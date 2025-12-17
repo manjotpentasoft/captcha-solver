@@ -34,11 +34,12 @@ export default function BlogSection() {
           className="text-center max-w-2xl mx-auto mb-12"
           variants={itemVariants}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white">
+          <h2 className="text-3xl md:text-4xl font-bold text-background">
             Insights & Developer Guides
           </h2>
-          <p className="mt-3 text-gray-300">
-            Latest insights, tutorials, and best practices for building accessible and authorized automation with our APIs.
+          <p className="mt-3 text-background/50">
+            Latest insights, tutorials, and best practices for building
+            accessible and authorized automation with our APIs.
           </p>
         </motion.div>
 
@@ -52,7 +53,7 @@ export default function BlogSection() {
               key={post.title}
               variants={itemVariants}
               whileHover={{ y: -6 }}
-              className="group rounded-2xl overflow-hidden shadow-lg bg-background/5 border border-primary transition"
+              className="group rounded-2xl overflow-hidden shadow-lg border border-primary transition"
             >
               <Link href={post.link}>
                 <div className="relative w-full h-50 xl:h-60 overflow-hidden">
@@ -64,19 +65,19 @@ export default function BlogSection() {
                   />
                 </div>
                 <div className="p-6 flex flex-col h-full">
-                  <h3 className="text-lg font-semibold text-white line-clamp-2">
+                  <h3 className="text-lg font-semibold text-background line-clamp-2">
                     {post.title}
                   </h3>
-                  <p className="mt-2 text-sm text-gray-300 line-clamp-3">
+                  <p className="mt-2 text-sm text-background/70 line-clamp-3">
                     {post.description}
                   </p>
                   <div className="flex items-center justify-between mt-4">
                     <div className="flex items-center gap-2">
-                      <span className="text-sm text-gray-300">
+                      <span className="text-sm text-background/70">
                         {post.author}
                       </span>
                     </div>
-                    <span className="text-sm text-gray-400">{post.date}</span>
+                    <span className="text-sm text-background/70">{post.date}</span>
                   </div>
                   {post.tag && (
                     <span className="mt-3 inline-block text-xs bg-primary/20 text-primary px-3 py-1 rounded-full">

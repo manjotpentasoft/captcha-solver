@@ -1,0 +1,34 @@
+# Voice CAPTCHA API
+
+**Endpoint:** `POST /api/public/voiceCaptcha`
+
+**Supported requests:**
+
+1. Multipart form upload with a file field named `file` (e.g. `-F "file=@audio.mp3"`).
+2. JSON body with `{ "url": "https://example.com/audio.mp3" }`.
+
+**Response (200):**
+
+```json
+{ "sentence": "<transcribed sentence>" }
+```
+
+**Example (curl, upload):**
+
+```bash
+curl -X POST http://localhost:3000/api/public/voiceCaptcha \
+  -F "file=@captcha.mp3"
+```
+
+**Example (curl, URL):**
+
+```bash
+curl -X POST http://localhost:3000/api/public/voiceCaptcha \
+  -H "Content-Type: application/json" \
+  -d '{"url":"https://example.com/captcha.mp3"}'
+```
+
+**Notes:**
+
+- The endpoint uses ElevenLabs (`lib/voiceToText.ts`) to transcribe audio to text. Make sure `ELEVENLABS_API_KEY` is set.
+- Returns a normalized short sentence in the `sentence` field and raw transcription under `transcription` when available (internal use).

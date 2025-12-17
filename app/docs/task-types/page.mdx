@@ -1,0 +1,100 @@
+# Task Types
+
+Our CAPTCHA Solver supports multiple task types based on the format of the CAPTCHA you need to solve.  
+Each task type is designed to handle a specific input and return results in the most efficient way possible.
+
+If you’re unsure which task to use, this guide will help you choose the correct one.
+
+---
+
+## Recognition Tasks
+
+Recognition tasks use AI models to analyze and extract information from different types of CAPTCHA content, including images, text prompts, and audio challenges.
+
+These tasks are ideal when you need to **interpret CAPTCHA data and return a human-readable result**, such as extracted text or transcribed audio.
+
+---
+
+## Image CAPTCHA Recognition
+
+Use this task type when the CAPTCHA consists of **distorted text or numbers embedded in an image**.
+
+### When to Use
+- OCR-style image CAPTCHAs
+- Visual verification challenges
+- Image-based CAPTCHA prompts
+
+### Task Behavior
+- The result is returned **synchronously**
+- You receive the recognized text directly in the API response
+
+This task is best suited for fast, real-time image CAPTCHA solving.
+
+---
+
+## Text CAPTCHA Parsing
+
+Use this task type when the CAPTCHA presents a **textual challenge** that requires understanding and generating a response.
+
+### When to Use
+- Text-based verification questions
+- Logic or prompt-style CAPTCHA challenges
+
+### Task Behavior
+- Processed synchronously
+- Returns an AI-generated text response
+
+This task is useful for CAPTCHAs that rely on **human-like text comprehension**.
+
+---
+
+## Audio CAPTCHA Transcription
+
+Use this task type when the CAPTCHA is delivered as **audio**, typically for accessibility purposes.
+
+### When to Use
+- Audio CAPTCHAs
+- Accessibility-focused verification flows
+
+### Task Behavior
+- May require short processing time
+- Result is returned as a transcribed text response
+
+This task is commonly used to support **accessibility workflows** and automated testing.
+
+---
+
+## Common Use Cases
+
+Our CAPTCHA task types are commonly used in the following scenarios:
+
+- Automated testing tools
+- QA and staging environments
+- Accessibility support workflows
+- Internal automation tools
+- Authorized research and analysis
+- Custom enterprise integrations
+
+---
+
+## Choosing the Right Task Type
+
+| CAPTCHA Format | Recommended Task Type |
+|---------------|-----------------------|
+| Image-based CAPTCHA | Image CAPTCHA Recognition |
+| Text-based CAPTCHA | Text CAPTCHA Parsing |
+| Audio CAPTCHA | Audio CAPTCHA Transcription |
+
+Selecting the correct task type ensures optimal performance and accurate results.
+
+---
+
+## Important Notes
+
+- Always ensure you have **authorization** to automate CAPTCHA-protected systems
+- Monitor task processing times and handle pending results appropriately
+- Refer to the API documentation for detailed request and response formats
+
+---
+
+If you need help selecting the right task type or integrating our APIs, please refer to the documentation or contact our support team.

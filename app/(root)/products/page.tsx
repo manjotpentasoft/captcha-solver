@@ -34,14 +34,14 @@ export default function ProductsPage() {
           <div className="mt-10 flex gap-4 justify-center flex-wrap">
             <a
               href="mailto:support@captchasolver.com"
-              className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-white font-semibold hover:bg-primary/90 transition"
+              className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-background font-semibold hover:bg-primary/90 transition"
             >
               Talk to Sales <ArrowRight className="w-4 h-4" />
             </a>
             <a
               href="#"
               target="_blank"
-              className="inline-flex items-center gap-2 rounded-lg border border-primary px-6 py-3 text-primary font-semibold hover:bg-primary hover:text-white transition"
+              className="inline-flex items-center gap-2 rounded-lg border border-primary px-6 py-3 text-primary font-semibold hover:bg-primary hover:text-background transition"
             >
               Get Free Trial <ArrowRight className="w-4 h-4" />
             </a>

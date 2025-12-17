@@ -55,7 +55,7 @@ const features = [
 export default function WhyBetterSection() {
   return (
     <motion.section
-      className="py-4 relative overflow-hidden"
+      className="py-12 relative overflow-hidden"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"

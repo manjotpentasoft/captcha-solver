@@ -117,7 +117,7 @@ export default function VoiceCaptchaPage() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h2 className="text-4xl font-bold text-white">How It Works</h2>
+            <h2 className="text-4xl font-bold text-background">How It Works</h2>
             <p className="mt-4 text-gray-300">
               Simple three-step workflow to extract answers from audio CAPTCHAs:
             </p>
@@ -132,7 +132,7 @@ export default function VoiceCaptchaPage() {
           >
             <div className="flex flex-col items-center gap-4">
               <Upload className="w-12 h-12 text-primary" />
-              <h4 className="text-xl font-semibold text-white">
+              <h4 className="text-xl font-semibold text-background">
                 1. Upload or Provide URL
               </h4>
               <p className="text-center text-gray-300">
@@ -141,7 +141,7 @@ export default function VoiceCaptchaPage() {
             </div>
             <div className="flex flex-col items-center gap-4">
               <Loader2 className="w-12 h-12 text-primary" />
-              <h4 className="text-xl font-semibold text-white">
+              <h4 className="text-xl font-semibold text-background">
                 2. AI Transcription
               </h4>
               <p className="text-center text-gray-300">
@@ -151,7 +151,7 @@ export default function VoiceCaptchaPage() {
             </div>
             <div className="flex flex-col items-center gap-4">
               <Sparkles className="w-12 h-12 text-primary" />
-              <h4 className="text-xl font-semibold text-white">
+              <h4 className="text-xl font-semibold text-background">
                 3. Receive Answer
               </h4>
               <p className="text-center text-gray-300">
@@ -265,7 +265,7 @@ export default function VoiceCaptchaPage() {
                 <button
                   onClick={solveCaptcha}
                   disabled={loading}
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-4 text-white font-semibold shadow-lg hover:bg-primary/90 transition-all transform hover:scale-105 disabled:opacity-50"
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-4 text-background font-semibold shadow-lg hover:bg-primary/90 transition-all transform hover:scale-105 disabled:opacity-50"
                 >
                   {loading ? (
                     <>
@@ -300,7 +300,7 @@ export default function VoiceCaptchaPage() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="max-w-7xl mx-auto bg-gray-900 rounded-3xl p-10 shadow-xl space-y-6"
         >
-          <h4 className="text-3xl font-bold text-white text-center mb-4">
+          <h4 className="text-3xl font-bold text-background text-center mb-4">
             Audio CAPTCHA API Example
           </h4>
 
@@ -335,7 +335,7 @@ Response:
 
           {/* STEPS */}
           <div className="space-y-4 text-gray-300">
-            <h4 className="text-xl font-semibold text-white">
+            <h4 className="text-xl font-semibold text-background">
               Step 1: Submit Audio
             </h4>
             <p>
@@ -355,7 +355,7 @@ Response:
               </li>
             </ul>
 
-            <h4 className="text-xl font-semibold text-white">
+            <h4 className="text-xl font-semibold text-background">
               Step 2: AI Transcription
             </h4>
             <p>
@@ -364,7 +364,7 @@ Response:
               formatting the sentence for accuracy.
             </p>
 
-            <h4 className="text-xl font-semibold text-white">
+            <h4 className="text-xl font-semibold text-background">
               Step 3: Receive Result
             </h4>
             <p>
@@ -373,7 +373,9 @@ Response:
               workflows.
             </p>
 
-            <h4 className="text-xl font-semibold text-white">Error Handling</h4>
+            <h4 className="text-xl font-semibold text-background">
+              Error Handling
+            </h4>
             <p>
               If neither an audio file nor URL is provided, the API returns a{" "}
               <code className="text-red-400">400</code> error. Processing

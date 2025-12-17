@@ -71,13 +71,13 @@ export default function ImageCaptchaPage() {
           <div className="mt-10 flex justify-center gap-4 flex-wrap">
             <a
               href="#demo"
-              className="inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-4 text-white font-semibold shadow hover:bg-primary/90 transition"
+              className="inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-4 text-background font-semibold shadow hover:bg-primary/90 transition"
             >
               Try Live Demo <ArrowRight className="w-4 h-4" />
             </a>
             <a
               href="/docs"
-              className="inline-flex items-center gap-2 rounded-xl border border-primary px-8 py-4 font-semibold text-primary hover:bg-primary hover:text-white transition"
+              className="inline-flex items-center gap-2 rounded-xl border border-primary px-8 py-4 font-semibold text-primary hover:bg-primary hover:text-background transition"
             >
               View API Docs <ArrowRight className="w-4 h-4" />
             </a>
@@ -110,7 +110,7 @@ export default function ImageCaptchaPage() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h2 className="text-4xl font-bold text-white">How It Works</h2>
+            <h2 className="text-4xl font-bold text-background">How It Works</h2>
             <p className="mt-4 text-gray-300">
               Simple three-step workflow to extract text from any image CAPTCHA:
             </p>
@@ -246,7 +246,7 @@ export default function ImageCaptchaPage() {
                 <button
                   onClick={solveCaptcha}
                   disabled={loading}
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-4 text-white font-semibold shadow-lg hover:bg-primary/90 transition-all transform hover:scale-105 disabled:opacity-50"
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-4 text-background font-semibold shadow-lg hover:bg-primary/90 transition-all transform hover:scale-105 disabled:opacity-50"
                 >
                   {loading ? (
                     <>
@@ -281,7 +281,7 @@ export default function ImageCaptchaPage() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="max-w-7xl mx-auto bg-gray-900 rounded-3xl p-10 shadow-xl space-y-6"
         >
-          <h4 className="text-3xl font-bold text-white text-center mb-4">
+          <h4 className="text-3xl font-bold text-background text-center mb-4">
             API Example
           </h4>
 
@@ -306,7 +306,7 @@ Response:
           </pre>
 
           <div className="space-y-4 text-gray-300">
-            <h4 className="text-xl font-semibold text-white">
+            <h4 className="text-xl font-semibold text-background">
               Step 1: Submit Image URL
             </h4>
             <p>
@@ -316,7 +316,7 @@ Response:
               (PNG, JPG, or GIF).
             </p>
 
-            <h4 className="text-xl font-semibold text-white">
+            <h4 className="text-xl font-semibold text-background">
               Step 2: Receive Result
             </h4>
             <p>
@@ -325,7 +325,7 @@ Response:
               verification, or scraping workflow.
             </p>
 
-            <h4 className="text-xl font-semibold text-white">
+            <h4 className="text-xl font-semibold text-background">
               Step 3: Error Handling
             </h4>
             <p>

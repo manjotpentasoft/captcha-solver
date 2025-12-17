@@ -1,0 +1,133 @@
+# Getting Started
+
+This guide walks you through the complete process of using our CAPTCHA Solver — from account creation to solving your first CAPTCHA using our API.
+
+You’ll be up and running in just a few minutes.
+
+---
+
+## Step 1: Create an Account
+
+Before using our CAPTCHA-solving services, you need to create an account.
+
+Once registered, you’ll gain access to:
+
+- Your personal dashboard
+- API key management
+- Usage and credit tracking
+- Request analytics
+
+Create your account from the **Sign Up** page.
+
+---
+
+## Step 2: Purchase Credits
+
+Our platform uses a **credit-based pricing model**.
+
+Before making API requests, you must purchase credits to activate CAPTCHA-solving APIs.
+
+### Why Credits?
+
+- No subscriptions
+- No recurring fees
+- Pay only for what you use
+
+Credits are deducted automatically based on successful CAPTCHA solves.
+
+---
+
+## Step 3: Get Your API Key
+
+After purchasing credits, you can generate your API key from the dashboard.
+
+Your API key is required to authenticate every API request.
+
+**Keep your API key secure**. Do not expose it in client-side code or public repositories.
+
+---
+
+## Step 4: Create a CAPTCHA Task
+
+With your API key ready, you can now submit CAPTCHA-solving requests.
+
+Below is an example of creating an **image CAPTCHA task**.
+
+### Create Task Request
+
+```http
+const response = await fetch("/api/imageCaptcha", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer YOUR_API_KEY",
+  },
+  body: JSON.stringify({
+    imageUrl: "https://example.com/captcha.png",
+  }),
+});
+```
+
+If your request is valid and your account has sufficient credits, you’ll receive a successful response.
+
+---
+
+## Supported CAPTCHA Task Types
+
+Our CAPTCHA Solver supports multiple task types, depending on the CAPTCHA format:
+
+- **Image CAPTCHA Recognition**
+- **Text CAPTCHA Parsing**
+- **Audio CAPTCHA Transcription**
+
+Each task type is optimized for speed and accuracy.
+
+---
+
+## Step 5: Get Task Result
+
+Most image and text CAPTCHA tasks return results instantly.  
+Some tasks (such as complex audio CAPTCHAs) may require a short processing delay.
+
+A successful response looks like this:
+
+```json
+{
+  "text": "X7K9P"
+}
+```
+
+Tasks complete within 1–10 seconds.
+
+## Error Handling
+
+If a request fails, the response will include an error message explaining the issue, such as:
+
+- Invalid API key
+- Insufficient credits
+- Invalid task parameters
+
+Always handle errors gracefully in your application to ensure stability and a smooth user experience.
+
+---
+
+## Best Practices
+
+To get the best results from our CAPTCHA Solver APIs, we recommend the following:
+
+- Store API keys securely and never expose them in client-side code
+- Monitor credit usage regularly via the dashboard
+- Implement retry logic for tasks that are still processing
+- Ensure you have proper authorization to automate CAPTCHA-protected systems
+
+---
+
+## Ready to Start?
+
+You’re now ready to solve CAPTCHAs using our APIs.
+
+- **Purchase credits**
+- **Generate your API key**
+- **Start solving CAPTCHA challenges**
+
+If you need assistance, explore the rest of the documentation or contact our support team.

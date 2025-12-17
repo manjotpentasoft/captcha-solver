@@ -1,11 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="py-16 border-t-2 border-border text-center sm:text-left">
+    <footer className="py-16 border-t-2 border-border text-center sm:text-left mt-4">
       <div className="container mx-auto px-4 grid gap-8 lg:gap-10 sm:grid-cols-2 lg:grid-cols-4">
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-2 font-bold text-lg justify-center sm:justify-start">

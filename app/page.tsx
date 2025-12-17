@@ -6,10 +6,11 @@ import PricingSection from "@/components/PricingSection";
 import UseCasesSection from "@/components/UseCasesSection";
 import BlogSection from "@/components/BlogSection";
 import WhyBetterSection from "@/components/WhyBetterSection";
+import CTASection from "@/components/CTASection";
 
 export default function page() {
   return (
-  <div className="min-h-screen flex flex-col">
+  <div className="w-full flex flex-col">
     <Navbar />
     <HeroSection />
     <HowItWorks />
@@ -17,6 +18,7 @@ export default function page() {
     <UseCasesSection />
     <BlogSection />
     <WhyBetterSection />
+    <CTASection />
     <Footer />
   </div>
   )

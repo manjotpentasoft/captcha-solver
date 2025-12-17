@@ -139,7 +139,7 @@ export default function HowItWorks() {
                 transition={{ duration: 0.25 }}
               >
                 <Link
-                  href="/docs"
+                  href="/docs/api"
                   className="inline-flex h-11 items-center justify-center rounded-md border border-border px-5 text-sm font-semibold transition hover:border-primary hover:text-primary"
                 >
                   API Documentation
@@ -150,15 +150,15 @@ export default function HowItWorks() {
 
           {/* Right: Code Example */}
           <motion.div
-            className="rounded-xl bg-[#0f172a] text-white p-4 md:p-6 text-sm font-mono overflow-x-auto"
+            className="rounded-xl bg-foreground text-background p-4 md:p-6 text-sm font-mono overflow-x-auto"
             variants={codeBlockVariants}
           >
-            <div className="flex items-center justify-between mb-3 text-xs text-gray-400">
+            <div className="flex items-center justify-between mb-3 text-xs">
               <span>Example: Solve Image CAPTCHA</span>
               <span>POST /api/imageCaptcha</span>
             </div>
 
-            <p className="mb-3 text-xs text-gray-400">
+            <p className="mb-3 text-xs">
               Requires an active plan and valid API key
             </p>
 

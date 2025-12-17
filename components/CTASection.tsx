@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export default function CTASection() {
   return (
-    <section className="max-w-7xl mx-auto relative bg-foreground rounded-3xl overflow-hidden py-10 px-6 md:px-12 lg:px-20">
+    <section className="max-w-7xl mx-auto relative bg-foreground rounded-3xl overflow-hidden py-10 px-6 md:px-12 lg:px-60">
       <div className="absolute -top-40 -right-40 rounded-full bg-gradient-to-tr from-primary/30 to-purple-500/20 blur-3xl pointer-events-none" />
       <div className="absolute -bottom-40 -left-40 rounded-full bg-gradient-to-tr from-purple-500/20 to-primary/20 blur-3xl pointer-events-none" />
 
@@ -34,7 +34,7 @@ export default function CTASection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="mt-4 text-gray-300 sm:text-lg max-w-5xl mx-auto"
+          className="mt-4 text-background/50 sm:text-lg max-w-5xl mx-auto"
         >
           Automate image, text, and audio CAPTCHA solving with our fast,
           developer-friendly API — built for reliability, speed, and scale.
@@ -48,14 +48,14 @@ export default function CTASection() {
           className="mt-6 flex justify-center gap-4 flex-wrap"
         >
           <Link
-            href="#"
+            href="/signup"
             className="group inline-flex items-center gap-4 bg-primary text-background font-semibold px-10 py-4 rounded-xl shadow-lg hover:bg-foreground hover:border hover:border-primary hover:text-primary transition-all duration-300 focus:ring-4 focus:ring-offset-2 focus:ring-primary/50"
           >
             Get Started
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
           <Link
-            href="#"
+            href="/docs"
             className="inline-flex items-center gap-2 rounded-xl border border-primary px-8 py-4 font-semibold text-primary hover:bg-primary hover:text-background transition"
           >
             Read Documentation{" "}

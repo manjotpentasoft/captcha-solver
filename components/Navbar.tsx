@@ -1,11 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { navLinks } from "@/constants/navLinks";
+import { Moon, Sun } from "lucide-react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Load saved mode from localStorage
+  useEffect(() => {
+    const savedMode = localStorage.getItem("theme");
+    if (savedMode === "dark") {
+      setDarkMode(true);
+      document.documentElement.classList.add("dark");
+    }
+  }, []);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    if (!darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  };
 
   const renderLinks = (isMobile = false) =>
     navLinks.map((link) => (
@@ -39,13 +61,26 @@ export default function Navbar() {
           {renderLinks()}
         </nav>
 
-        <div className="ml-6 hidden lg:flex items-center">
+        <div className="ml-6 hidden lg:flex items-center gap-4">
           <Link
             href="/signin"
             className="rounded-md px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/20 focus:outline-none focus:ring-2 focus:ring-ring"
           >
             Sign in
           </Link>
+
+          {/* Dark/Light Mode Button */}
+          <button
+            onClick={toggleDarkMode}
+            className="rounded-md p-2 text-primary-foreground hover:bg-primary-foreground/20 focus:outline-none focus:ring-2 focus:ring-ring"
+            aria-label="Toggle dark mode"
+          >
+            {darkMode ? (
+              <Moon className="h-5 w-5" />
+            ) : (
+              <Sun className="h-5 w-5" />
+            )}
+          </button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -91,6 +126,17 @@ export default function Navbar() {
             >
               Sign in
             </Link>
+
+            {/* Mobile Dark Mode Toggle */}
+            <button
+              onClick={() => {
+                toggleDarkMode();
+                setOpen(false);
+              }}
+              className="mt-2 inline-flex items-center justify-center rounded-md bg-primary-foreground/10 px-4 py-2 font-semibold"
+            >
+              {darkMode ? "Light Mode" : "Dark Mode"}
+            </button>
           </nav>
         </div>
       )}

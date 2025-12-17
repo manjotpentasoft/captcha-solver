@@ -1,0 +1,95 @@
+# Basic API Instructions
+
+This page explains the core concepts and requirements for interacting with our CAPTCHA Solver APIs.  
+Before making requests, ensure you have an active account, sufficient credits, and a valid API key.
+
+---
+
+## Base URL
+
+All API requests are made over HTTPS.
+
+```http
+https://api.yourcaptchasolver.com
+```
+
+## Authentication
+
+All API requests must be authenticated using your API key.
+
+**Authorization Header**
+
+Include your API key in the request headers:
+
+```http
+Authorization: Bearer YOUR_API_KEY
+```
+
+**Note -** Never expose your API key in client-side code or public repositories.
+
+## Content Type
+
+All requests and responses use JSON format.
+
+```http
+Content-Type: application/json
+```
+
+## Request Flow Overview
+
+Most CAPTCHA-solving requests follow this standard flow:
+
+1. Submit a CAPTCHA-solving request  
+2. Receive a task ID (if processing is required)  
+3. Retrieve the task result  
+4. Handle the response or error  
+
+Some tasks return results immediately, while others may require polling.
+
+---
+
+## Creating a CAPTCHA Task
+
+To solve a CAPTCHA, submit a request to the appropriate endpoint based on the CAPTCHA type.
+
+## API Reference
+
+This section documents the public API endpoints available in this project.
+
+- [/api/public/textCaptcha](./api/text-captcha) — Extract the final answer from a text input.
+- [/api/public/imageCaptcha](./api/image-captcha) — Extract readable text from an image URL.
+- [/api/public/voiceCaptcha](./api/voice-captcha) — Transcribe audio from file upload or public URL.
+
+Each endpoint accepts POST requests and returns JSON.
+
+---
+
+## Rate Limits
+
+To ensure fair usage and platform stability, rate limits may apply.
+
+If you exceed allowed limits, requests may be temporarily blocked.  
+Refer to the **Rate Limits** section for detailed thresholds.
+
+---
+
+## Best Practices
+
+- Keep API keys secure
+- Validate input before sending requests
+- Handle pending task states gracefully
+- Implement retries with exponential backoff
+- Monitor credit usage from the dashboard
+
+---
+
+## Next Steps
+
+Now that you understand the basics, explore:
+
+- Supported CAPTCHA task types
+- Detailed API reference
+- Error codes and troubleshooting
+- Performance and scalability guidelines
+
+If you need assistance, contact our support team or browse the rest of the documentation.
