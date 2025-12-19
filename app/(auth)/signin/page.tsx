@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { Eye, EyeOff } from "lucide-react";
 import { signIn } from "next-auth/react";
 
 const containerVariants: Variants = {
@@ -116,6 +117,7 @@ function SigninForm() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -158,19 +160,34 @@ function SigninForm() {
         required
       />
 
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
-        className="
-          h-12 w-full rounded-xl
-          border border-primary/50 bg-background
-          px-4 text-base
-          focus:outline-none focus:ring-2 focus:ring-primary
-        "
-        required
-      />
+      <div className="relative">
+        <input
+          type={showPassword ? "text" : "password"}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          className="
+      h-12 w-full rounded-xl
+      border border-primary/50 bg-background
+      px-4 pr-12 text-base
+      focus:outline-none focus:ring-2 focus:ring-primary
+    "
+          required
+        />
+
+        <button
+          type="button"
+          onClick={() => setShowPassword((prev) => !prev)}
+          className="
+      absolute right-3 top-1/2 -translate-y-1/2
+      text-foreground/50 hover:text-foreground
+      transition
+    "
+          aria-label={showPassword ? "Hide password" : "Show password"}
+        >
+          {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+        </button>
+      </div>
 
       <button
         type="submit"
