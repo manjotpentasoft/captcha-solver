@@ -1,10 +1,59 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { User, Shield, Key, CreditCard } from "lucide-react";
+
+interface UserData {
+  id: string;
+  email: string;
+  name: string;
+  credits: number;
+  currentPlan?: {
+    name: string;
+    price: number;
+    credits: number;
+    description?: string;
+  } | null;
+  apiKey?: string;
+}
 
 export default function ProfilePage() {
   const [editing, setEditing] = useState(false);
+  const [userData, setUserData] = useState<UserData | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  const regenerateKey = async () => {
+    if (!userData) return;
+
+    try {
+      const res = await fetch("/api/api-key", { method: "POST" });
+      if (!res.ok) throw new Error("Failed to generate API key");
+      const data = await res.json();
+
+      setUserData((prev) => (prev ? { ...prev, apiKey: data.key } : prev));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    async function fetchUser() {
+      try {
+        const res = await fetch("/api/user");
+        if (!res.ok) throw new Error("Failed to fetch user data");
+        const data = await res.json();
+        setUserData(data);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchUser();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (!userData) return <p>Failed to load user data</p>;
 
   return (
     <div className="space-y-8">
@@ -16,12 +65,6 @@ export default function ProfilePage() {
             Manage your personal information, security and billing details
           </p>
         </div>
-        <button
-          onClick={() => setEditing(!editing)}
-          className="rounded-xl bg-black px-6 py-2.5 text-sm font-medium text-white hover:bg-gray-800 transition"
-        >
-          {editing ? "Cancel" : "Edit Profile"}
-        </button>
       </div>
 
       {/* Grid Layout */}
@@ -33,15 +76,22 @@ export default function ProfilePage() {
               <User size={32} />
             </div>
             <div>
-              <h2 className="text-lg font-semibold">John Doe</h2>
-              <p className="text-sm text-gray-500">john@example.com</p>
+              <h2 className="text-lg font-semibold">{userData.name}</h2>
+              <p className="text-sm text-gray-500">{userData.email}</p>
             </div>
           </div>
 
           <div className="mt-6 space-y-4">
-            <InfoRow icon={<CreditCard size={18} />} label="Plan" value="Pro" />
-            <InfoRow icon={<Key size={18} />} label="API Credits" value="12,500" />
-            <InfoRow icon={<Shield size={18} />} label="Account Status" value="Active" />
+            <InfoRow
+              icon={<CreditCard size={18} />}
+              label="Plan"
+              value={userData.currentPlan ? userData.currentPlan.name : "None"}
+            />
+            <InfoRow
+              icon={<Key size={18} />}
+              label="API Credits"
+              value={userData.credits.toLocaleString()}
+            />
           </div>
         </div>
 
@@ -49,8 +99,19 @@ export default function ProfilePage() {
         <div className="lg:col-span-2 space-y-8">
           {/* Personal Info */}
           <Card title="Personal Information">
-            <Field label="Full Name" value="John Doe" editing={editing} />
-            <Field label="Email Address" value="john@example.com" editing={false} />
+            <div className="flex items-center justify-between">
+              <Field
+                label="Full Name"
+                value={userData.name}
+                editing={editing}
+              />
+              <button
+                onClick={() => setEditing(!editing)}
+                className="rounded-xl bg-black px-6 py-2.5 text-sm font-medium text-white hover:bg-gray-800 transition"
+              >
+                {editing ? "Cancel" : "Edit Profile"}
+              </button>
+            </div>
           </Card>
 
           {/* Security */}
@@ -71,9 +132,16 @@ export default function ProfilePage() {
             <div className="flex items-center justify-between gap-4">
               <div className="flex items-center gap-3 text-sm">
                 <Key size={18} />
-                <span className="truncate">sk_live_**************************</span>
+                <span className="truncate">
+                  {userData.apiKey
+                    ? `${userData.apiKey.slice(0, 4)}****************`
+                    : "Not generated"}
+                </span>
               </div>
-              <button className="rounded-lg border border-primary/50 px-4 py-1.5 text-sm hover:bg-gray-50">
+              <button
+                onClick={regenerateKey}
+                className="rounded-lg border border-primary/50 px-4 py-1.5 text-sm hover:bg-gray-50"
+              >
                 Regenerate
               </button>
             </div>
@@ -84,7 +152,13 @@ export default function ProfilePage() {
   );
 }
 
-function Card({ title, children }: { title: string; children: React.ReactNode }) {
+function Card({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
     <div className="rounded-2xl border border-primary/50 p-6 shadow-sm">
       <h3 className="text-lg font-semibold mb-4">{title}</h3>

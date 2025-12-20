@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   description: "A simple captcha solving service.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

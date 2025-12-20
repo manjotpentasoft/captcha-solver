@@ -1,7 +1,6 @@
 "use client";
 
-import useSWR from "swr";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Copy, RefreshCw } from "lucide-react";
 
 interface ApiKey {
@@ -11,14 +10,29 @@ interface ApiKey {
   lastUsedAt: string | null;
 }
 
-const fetcher = (url: string) => fetch(url).then((r) => r.json());
-
 export default function ApiKeyPage() {
-const { data: apiKeys, mutate } = useSWR<ApiKey[]>("/api/api-keys", fetcher);
-
-const keys = Array.isArray(apiKeys) ? apiKeys : [];
+  const [keys, setKeys] = useState<ApiKey[]>([]);
+  const [loading, setLoading] = useState(true);
   const [loadingId, setLoadingId] = useState<string | null>(null);
 
+  // Fetch all API keys on mount
+  useEffect(() => {
+    async function fetchKeys() {
+      try {
+        const res = await fetch("/api/api-key");
+        if (!res.ok) throw new Error("Failed to fetch API keys");
+        const data = await res.json();
+        setKeys(data);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchKeys();
+  }, []);
+
+  // Copy key to clipboard
   const copyKey = (key: string) => {
     navigator.clipboard.writeText(key);
     alert("API Key copied to clipboard!");
@@ -27,24 +41,20 @@ const keys = Array.isArray(apiKeys) ? apiKeys : [];
   const regenerateKey = async (id: string) => {
     setLoadingId(id);
     try {
-      const res = await fetch("/api/api-keys/regenerate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id }),
-      });
-
-      if (!res.ok) throw new Error("Failed to regenerate key");
-
-      const newKey = await res.json();
-      // revalidate
-      mutate();
-      alert("API Key regenerated!");
-    } catch (err: any) {
-      alert(err.message || "Error");
+      const res = await fetch(`/api/api-key`, { method: "POST" });
+      if (!res.ok) throw new Error("Failed to regenerate API key");
+      const data = await res.json();
+      setKeys((prev) =>
+        prev.map((key) => (key.id === id ? { ...key, key: data.key, createdAt: data.createdAt } : key))
+      );
+    } catch (err) {
+      console.error(err);
     } finally {
       setLoadingId(null);
     }
   };
+
+  if (loading) return <p>Loading API keys...</p>;
 
   return (
     <div className="space-y-8">
@@ -52,8 +62,10 @@ const keys = Array.isArray(apiKeys) ? apiKeys : [];
         Your API Keys
       </h1>
 
+      {keys.length === 0 && <p>No API keys found. Generate one to get started.</p>}
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
-        {keys.map((api: any) => (
+        {keys.map((api) => (
           <div
             key={api.id}
             className="rounded-3xl p-4 sm:p-6 shadow-lg border border-primary/50 bg-primary/10 flex flex-col gap-4 transition hover:shadow-xl"

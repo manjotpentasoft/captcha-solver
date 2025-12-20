@@ -2,31 +2,28 @@
 
 import StatCard from "@/components/dashboard/StatCard";
 import { Zap, Activity, Package } from "lucide-react";
-import useSWR from "swr";
-
-const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 export default function UsagePage() {
-  const { data: usage } = useSWR("/api/usage", fetcher);
-  const { data: requests } = useSWR("/api/requests", fetcher);
-
   return (
     <div className="space-y-8">
       <p className="text-2xl font-bold">Usage</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <StatCard
           title="Total Requests"
-          value={(usage && usage.totalRequests) || 0}
+          value="0"
+          // value={(usage && usage.totalRequests) || 0}
           icon={<Activity size={40} />}
         />
         <StatCard
           title="Requests Today"
-          value={(usage && usage.requestsToday) || 0}
+          value="0"
+          // value={(usage && usage.requestsToday) || 0}
           icon={<Zap size={40} />}
         />
         <StatCard
           title="Credits Used"
-          value={(usage && usage.creditsUsed) || 0}
+          value="0"
+          // value={(usage && usage.creditsUsed) || 0}
           icon={<Package size={40} />}
         />
       </div>
@@ -45,7 +42,7 @@ export default function UsagePage() {
               </tr>
             </thead>
             <tbody>
-              {(requests || []).map((req: any) => (
+              {/* {(requests || []).map((req: any) => (
                 <tr
                   key={req.id}
                   className="border-b border-border/20 hover:bg-primary/5"
@@ -57,7 +54,7 @@ export default function UsagePage() {
                   <td className="p-3">{req.status}</td>
                   <td className="p-3">{req.credits}</td>
                 </tr>
-              ))}
+              ))} */}
             </tbody>
           </table>
         </div>

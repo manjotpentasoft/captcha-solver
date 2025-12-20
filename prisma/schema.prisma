@@ -8,41 +8,33 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  createdAt DateTime @default(now())
-  password  String
-  credits   Int      @default(0)
-  currentPlanId String?  
+  id            String   @id @default(uuid())
+  name          String   
+  email         String   @unique
+  createdAt     DateTime @default(now())
+  password      String
+  credits       Int      @default(0)
+  currentPlanId String?
   currentPlan   Plan?    @relation(fields: [currentPlanId], references: [id])
 
   // Relations
-  apiKeys    ApiKey[]
-  requests   Request[]
+  apiKeys ApiKey[]
 }
 
 model Plan {
   id          String  @id @default(cuid())
-  name        String
+  name        String  @unique
   price       Int
   credits     Int
   description String?
+  users       User[]
 }
 
 model ApiKey {
-  id        String   @id @default(cuid())
-  key       String   @unique
-  user      User     @relation(fields: [userId], references: [id])
-  userId    String
-  createdAt DateTime @default(now())
+  id         String    @id @default(cuid())
+  key        String    @unique
+  user       User      @relation(fields: [userId], references: [id])
+  userId     String
+  createdAt  DateTime  @default(now())
   lastUsedAt DateTime?
-}
-
-model Request {
-  id        String   @id @default(cuid())
-  user      User     @relation(fields: [userId], references: [id])
-  userId    String
-  status    String
-  credits   Int      @default(0)
-  createdAt DateTime @default(now())
 }
