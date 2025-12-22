@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
 
     if (!file && !audioUrl) {
       return NextResponse.json(
-        { error: "Provide either a 'file' or a 'url'." },
+        { success: false, error: "Provide either a 'file' or a 'url'." },
         { status: 400 }
       );
     }
@@ -46,7 +46,14 @@ export async function POST(request: NextRequest) {
       data: { credits: { decrement: 10 }, totalRequests: { increment: 1 } },
     });
 
-    return NextResponse.json({ sentence: result.sentence }, { status: 200 });
+    return NextResponse.json(
+      {
+        success: true,
+        message: "Audio transcribed successfully",
+        sentence: result.sentence,
+      },
+      { status: 200 }
+    );
   } catch (err) {
     const error = err as Error;
     console.error("voiceCaptcha error", error);

@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
 
     if (!imageUrl || typeof imageUrl !== "string") {
       return NextResponse.json(
-        { error: "imageUrl is required" },
+        { success: false, error: "imageUrl is required" },
         { status: 400 }
       );
     }
@@ -39,6 +39,8 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(
       {
+        success: true,
+        message: "Text extracted successfully.",
         text,
       },
       { status: 200 }
