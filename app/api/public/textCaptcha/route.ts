@@ -57,6 +57,8 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(
       {
+        success: true,
+        message: "Received final result.",
         ...result,
       },
       { status: 200 }
