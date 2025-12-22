@@ -44,17 +44,15 @@ export default function DashboardPage() {
 
       {user.credits === 0 && (
         <div className="rounded-3xl p-8 shadow-lg border border-primary/50 bg-primary/10 text-center">
-        <h2 className="text-xl font-semibold mb-2">API Key</h2>
-        <p className="text-foreground/80">
-          Purchase a plan from{" "}
-          <span className="font-medium text-primary">Billing page</span> and
-          generate your API key from the{" "}
-          <span className="font-medium text-primary">API Keys page</span>.
-        </p>
-      </div>
-      )
-
-      }
+          <h2 className="text-xl font-semibold mb-2">API Key</h2>
+          <p className="text-foreground/80">
+            Purchase a plan from{" "}
+            <span className="font-medium text-primary">Billing page</span> and
+            generate your API key from the{" "}
+            <span className="font-medium text-primary">API Keys page</span>.
+          </p>
+        </div>
+      )}
     </div>
   );
 }

@@ -39,7 +39,7 @@ export default function TextCaptchaPage() {
 
   return (
     <div className="relative overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/10 via-transparent to-transparent" />
+      <div className="absolute inset-0 -z-10 bg-linear-to-br from-primary/10 via-transparent to-transparent" />
 
       <main className="max-w-7xl mx-auto px-6 py-16 space-y-20">
         {/* HERO */}

@@ -3,6 +3,7 @@ import { type AuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
 
 export async function hashPassword(password: string) {
   const salt = await bcrypt.genSalt(10);
@@ -39,6 +40,10 @@ export const authOptions: AuthOptions = {
 
         if (!user) return null;
 
+        if (!user.password) {
+          return null;
+        }
+
         const isValid = await verifyPassword(
           credentials.password,
           user.password
@@ -52,9 +57,40 @@ export const authOptions: AuthOptions = {
         };
       },
     }),
+
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
   ],
 
   callbacks: {
+    async signIn({ user, account }) {
+      if (account?.provider === "google") {
+        if (!user.email) {
+          return false;
+        }
+
+        const existingUser = await prisma.user.findUnique({
+          where: { email: user.email },
+        });
+
+        if (!existingUser) {
+          await prisma.user.create({
+            data: {
+              email: user.email,
+              image: user.image ?? undefined,
+              credits: 500,
+              totalRequests: 0,
+              provider: "google",
+            },
+          });
+        }
+      }
+
+      return true;
+    },
+
     async jwt({ token, user }) {
       if (user) {
         token.sub = (user as any).id;

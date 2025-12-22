@@ -11,11 +11,13 @@ model User {
   id            String   @id @default(uuid())
   email         String   @unique
   createdAt     DateTime @default(now())
-  password      String
+  image         String?
+  password      String?
   credits       Int      @default(0)
   totalRequests Int      @default(0)
   currentPlanId String?
   currentPlan   Plan?    @relation(fields: [currentPlanId], references: [id])
+  provider      String?
 
   // Relations
   apiKeys ApiKey[]

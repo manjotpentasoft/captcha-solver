@@ -32,7 +32,7 @@ export default function SignInPage() {
       animate="visible"
     >
       {/* Background */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/5 via-background to-background" />
+      <div className="absolute inset-0 -z-10 bg-linear-to-br from-primary/5 via-background to-background" />
 
       <div className="container mx-auto flex min-h-screen items-center px-4">
         <div className="grid w-full gap-16 xl:grid-cols-2 items-center">
@@ -208,6 +208,18 @@ function SignupForm() {
         "
       >
         {loading ? "Creating account..." : "Sign Up"}
+      </button>
+
+      <button
+        type="button"
+        onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+        className="
+          mt-3 h-12 w-full
+          rounded-xl border border-primary/40
+          font-semibold transition-colors hover:bg-primary/50 cursor-pointer
+        "
+      >
+        Sign up with Google
       </button>
 
       {error && <p className="text-sm text-red-500">{error}</p>}

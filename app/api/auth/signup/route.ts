@@ -6,14 +6,8 @@ export async function POST(req: NextRequest) {
   try {
     const { email, password } = await req.json();
 
-    if (
-      typeof email !== "string" ||
-      typeof password !== "string"
-    ) {
-      return NextResponse.json(
-        { error: "Invalid input" },
-        { status: 400 }
-      );
+    if (typeof email !== "string" || typeof password !== "string") {
+      return NextResponse.json({ error: "Invalid input" }, { status: 400 });
     }
 
     if (password.length < 8) {
@@ -41,6 +35,7 @@ export async function POST(req: NextRequest) {
         email,
         password: hashedPassword,
         credits: 500,
+        provider: "credentials",
       },
     });
 

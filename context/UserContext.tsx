@@ -1,6 +1,12 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 
 interface Plan {
   id: string;
@@ -17,6 +23,8 @@ interface User {
   currentPlan?: Plan | null;
   totalRequests: number;
   apiKeys: string;
+  image?: string;
+  provider: string;
 }
 
 interface UserContextType {
