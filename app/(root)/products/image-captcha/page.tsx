@@ -4,7 +4,12 @@ import { motion } from "framer-motion";
 import {
   ArrowRight,
   Upload,
-  Image as ImageIcon,
+  Image,
+  ScanText,
+  Zap,
+  CheckCircle2,
+  ShieldCheck,
+  Code2,
   Sparkles,
   Loader2,
 } from "lucide-react";
@@ -80,9 +85,7 @@ export default function ImageCaptchaPage() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h2 className="text-4xl font-bold text-background">
-              How it Works
-            </h2>
+            <h2 className="text-4xl font-bold text-background">How it Works</h2>
             <p className="mt-4 text-background">
               The workflow is intentionally simple and synchronous.{" "}
             </p>
@@ -149,32 +152,32 @@ export default function ImageCaptchaPage() {
           >
             {[
               {
-                icon: Upload,
+                icon: ScanText,
                 title: "Image CAPTCHA Recognition",
                 desc: "Processes image-based CAPTCHA challenges and returns detected text.",
               },
               {
-                icon: Loader2,
+                icon: Zap,
                 title: "Synchronous Responses",
                 desc: "Results are returned directly in the response body when the request completes.",
               },
               {
-                icon: Sparkles,
+                icon: CheckCircle2,
                 title: "High Accuracy",
                 desc: "Reliable recognition even with distorted, warped, or noisy images.",
               },
               {
-                icon: ImageIcon,
+                icon: ShieldCheck,
                 title: "Secure Authentication",
                 desc: "All requests require a valid API key and sufficient credits.",
               },
               {
-                icon: Upload,
+                icon: Code2,
                 title: "API-First Integration",
                 desc: "Simple REST endpoint compatible with modern stacks and automation tools.",
               },
               {
-                icon: Loader2,
+                icon: Image,
                 title: "Common Image Formats",
                 desc: "Supports standard image formats such as PNG and JPEG when accessible via URL.",
               },

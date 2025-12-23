@@ -2,10 +2,15 @@
 
 import { motion } from "framer-motion";
 import {
+   Mic,
+  Zap,
+  CheckCircle2,
+  ShieldCheck,
+  Code2,
+  Link,
+  Sparkles,
   ArrowRight,
   Upload,
-  Image as ImageIcon,
-  Sparkles,
   Loader2,
 } from "lucide-react";
 import WhyBetterSection from "@/components/WhyBetterSection";
@@ -152,32 +157,32 @@ export default function VoiceCaptchaPage() {
           >
             {[
               {
-                icon: Upload,
-                title: "Speech-to-Text Transcription",
+                icon: Mic,
+                title: "Speech-to-Text",
                 desc: "Converts audio CAPTCHA prompts into readable text.",
               },
               {
-                icon: Loader2,
+                icon: Zap,
                 title: "Synchronous API",
                 desc: "Results are returned directly in the response body.",
               },
               {
-                icon: Sparkles,
+                icon: CheckCircle2,
                 title: "High Accuracy",
                 desc: "Reliable transcription even from noisy or distorted audio clips.",
               },
               {
-                icon: ImageIcon,
+                icon: ShieldCheck,
                 title: "Secure Authentication",
                 desc: "All requests require a valid API key and sufficient credits.",
               },
               {
-                icon: Upload,
-                title: "Developer-friendly Integration",
+                icon: Code2,
+                title: "Flexible Integration",
                 desc: "Works with backend services, scripts, and automation tools.",
               },
               {
-                icon: Loader2,
+                icon: Link,
                 title: "Multiple Input Methods",
                 desc: "Supports both file uploads and audio URLs.",
               },
@@ -273,11 +278,12 @@ Response:
             <h4 className="text-xl font-semibold text-background">
               Step 3: Handle Errors
             </h4>
-            <p>
+            <div>
               The API returns appropriate HTTP status codes, such as
               <ul className="mt-2">
                 <li>
-                  <code className="text-red-400">400</code> for missing audio input.
+                  <code className="text-red-400">400</code> for missing audio
+                  input.
                 </li>
                 <li>
                   <code className="text-red-400">401</code> for missing or
@@ -292,7 +298,7 @@ Response:
                   processing errors.
                 </li>
               </ul>
-            </p>
+            </div>
           </div>
 
           <p className="text-center text-background/50 mt-6">

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { navLinks } from "@/constants/navLinks";
-import ThemeToggle from "./ui/ThemeToggle";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -47,13 +46,10 @@ export default function Navbar() {
           >
             Sign in
           </Link>
-
-          <ThemeToggle />
         </div>
 
         {/* Mobile Menu Button */}
         <div className="flex lg:hidden items-center gap-4 ml-auto text-background">
-          <ThemeToggle />
           <button onClick={() => setOpen(!open)}>☰</button>
         </div>
       </div>

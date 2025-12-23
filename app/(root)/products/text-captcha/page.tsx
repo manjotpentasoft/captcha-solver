@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Loader2, ImageIcon, Upload } from "lucide-react";
+import { ArrowRight, Sparkles, Loader2, ImageIcon, Upload, FileText, Zap, CheckCircle2, ShieldCheck, Code2, Layers } from "lucide-react";
 import WhyBetterSection from "@/components/WhyBetterSection";
 import CTASection from "@/components/CTASection";
 import PricingSection from "@/components/PricingSection";
@@ -141,32 +141,32 @@ export default function TextCaptchaPage() {
           >
             {[
               {
-                icon: Upload,
+                icon: FileText,
                 title: "Text CAPTCHA Parsing",
                 desc: "Processes text-based CAPTCHA prompts and extracts final answers.",
               },
               {
-                icon: Loader2,
+                icon: Zap,
                 title: "Synchronous API",
                 desc: "Requests return results directly in the response body.",
               },
               {
-                icon: Sparkles,
+                icon: CheckCircle2,
                 title: "High Accuracy",
                 desc: "Reliable recognition and extraction, even with complex or obfuscated text.",
               },
               {
-                icon: ImageIcon,
+                icon: ShieldCheck,
                 title: "Secure Authentication",
                 desc: "All requests require a valid API key and sufficient credits.",
               },
               {
-                icon: Upload,
-                title: "Developer-Friendly Integration",
+                icon: Code2,
+                title: "Flexible Integration",
                 desc: "Works with scripts, backend services, and automation tools.",
               },
               {
-                icon: Loader2,
+                icon: Layers,
                 title: "API-First Design",
                 desc: "Simple REST endpoint compatible with modern stacks.",
               },

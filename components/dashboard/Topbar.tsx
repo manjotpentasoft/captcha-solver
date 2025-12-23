@@ -1,7 +1,6 @@
 "use client";
 
 import { Menu } from "lucide-react";
-import ThemeToggle from "../ui/ThemeToggle";
 import Link from "next/link";
 import { User } from "lucide-react";
 import { useUser } from "@/context/UserContext";
@@ -32,7 +31,6 @@ export default function Topbar({
       </button>
 
       <div className="ml-auto flex items-center gap-4">
-        <ThemeToggle />
         <Link
           href="/dashboard/profile"
           className="h-10 w-10 rounded-full bg-primary text-primary-foreground
