@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import bcrypt from "bcryptjs";
 import { type AuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
@@ -71,12 +72,12 @@ export const authOptions: AuthOptions = {
           return false;
         }
 
-        const existingUser = await prisma.user.findUnique({
+        let dbUser = await prisma.user.findUnique({
           where: { email: user.email },
         });
 
-        if (!existingUser) {
-          await prisma.user.create({
+        if (!dbUser) {
+          dbUser = await prisma.user.create({
             data: {
               email: user.email,
               image: user.image ?? undefined,
@@ -86,6 +87,7 @@ export const authOptions: AuthOptions = {
             },
           });
         }
+        (user as any).id = dbUser.id;
       }
 
       return true;
