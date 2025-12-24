@@ -17,8 +17,6 @@ export async function DELETE() {
       where: { userId },
     });
 
-    // await prisma.usageLog.deleteMany({ where: { userId } });
-
     await prisma.user.delete({
       where: { id: userId },
     });
