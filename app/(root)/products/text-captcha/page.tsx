@@ -235,7 +235,6 @@ Response:
             <h4 className="text-xl font-semibold text-background">
               Step 3: Handle Errors
             </h4>
-            <p>
               The API returns appropriate HTTP status codes, such as
               <ul className="mt-2">
                 <li>
@@ -255,7 +254,6 @@ Response:
                   processing errors.
                 </li>
               </ul>
-            </p>
           </div>
         </motion.div>
 

@@ -52,11 +52,11 @@ console.log(data.text);
 `,
   },
   {
-    title: "Voice CAPTCHA Solver",
+    title: "Audio CAPTCHA Solver",
     description:
       "Transcribe audio CAPTCHAs into text automatically. Perfect for accessibility and audio challenges.",
     icon: Mic,
-    apiEndpoint: "/products/voice-captcha",
+    apiEndpoint: "/products/audio-captcha",
     example: `const formData = new FormData();
 formData.append(
   "url",
